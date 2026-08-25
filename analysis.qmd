@@ -3,4 +3,4 @@ title: "Analyzing Music Data"
 Author: "Samuel Sammartano"
 format: html
 ---
-
+.gitignore
