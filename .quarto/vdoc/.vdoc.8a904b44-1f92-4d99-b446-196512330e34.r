@@ -1,11 +1,11 @@
----
-title: "Analyzing Music Data"
-Author: "Samuel Sammartano"
-format: html 
-execute:
-  echo: false
----
-```{r setup}
+#
+#
+#
+#
+#
+#
+#
+#
 #| message: false
 library(tidyverse)
 billboard <- read_csv("data/billboard.csv")
@@ -13,33 +13,9 @@ billboard |>
   select(artist, track, date.entered, wk1:wk4)
 
 summary(billboard$date.entered)
-```
-
-```{r music-data}
-#| message: false
-library(readr)
-music <- read_csv("data/music.csv")
-music |>
-  dplyr::summarise(
-    dplyr::across(
-      c(artist.familiarity, artist.hotttnesss, song.year, song.tempo),
-      list(
-        minimum = ~ min(.x, na.rm = TRUE),
-        lower_quartile = ~ quantile(.x, 0.25, na.rm = TRUE),
-        median = ~ median(.x, na.rm = TRUE),
-        upper_quartile = ~ quantile(.x, 0.75, na.rm = TRUE),
-        maximum = ~ max(.x, na.rm = TRUE)
-      )
-    )
-  ) |>
-  tidyr::pivot_longer(
-    dplyr::everything(),
-    names_to = c("variable", "statistic"),
-    names_pattern = "^(.*)_(.*)$"
-  )
-```
-
-```{r wk1-histogram}
+#
+#
+#
 wk1_data <- billboard |>
   drop_na(wk1)
 
@@ -54,9 +30,9 @@ ggplot(wk1_data, aes(x = wk1)) +
     x = "Week 1 ranking",
     y = "Count"
   )
-```
-
-```{r wk6-histogram}
+#
+#
+#
 wk6_data <- billboard |>
   drop_na(wk6)
 
@@ -71,9 +47,9 @@ ggplot(wk6_data, aes(x = wk6)) +
     x = "Week 6 ranking",
     y = "Count"
   )
-```
-
-```{r ranking-over-time}
+#
+#
+#
 billboard |>
   mutate(song = str_c(artist, " - ", track)) |>
   pivot_longer(
@@ -90,9 +66,9 @@ billboard |>
     x = "Week",
     y = "Rank"
   )
-```
-
-```{r ranking-completeness}
+#
+#
+#
 billboard |>
   summarise(
     across(
@@ -109,9 +85,9 @@ billboard |>
     names_sep = "_"
   ) |>
   pivot_wider(names_from = status, values_from = value)
-```
-
-```{r song-reentry}
+#
+#
+#
 billboard |>
   pivot_longer(
     cols = starts_with("wk"),
@@ -127,45 +103,9 @@ billboard |>
     .groups = "drop"
   ) |>
   count(reentered, name = "songs")
-```
-
-```{r song-summary}
-billboard_song_summary <- billboard |>
-  mutate(song = str_c(artist, " - ", track)) |>
-  pivot_longer(
-    cols = starts_with("wk"),
-    names_to = "week",
-    values_to = "rank"
-  ) |>
-  mutate(week = parse_number(week)) |>
-  filter(!is.na(rank)) |>
-  group_by(song, artist, track) |>
-  summarise(
-    first_rank = rank[week == min(week)][1],
-    best_rank = min(rank),
-    first_best_week = min(week[rank == min(rank)]),
-    weeks_on_chart = n(),
-    .groups = "drop"
-  )
-
-bind_rows(
-  billboard_song_summary |>
-    filter(best_rank == 1) |>
-    slice_min(first_best_week, n = 1, with_ties = FALSE) |>
-    mutate(story = "Fastest to number one"),
-  billboard_song_summary |>
-    filter(best_rank == 1) |>
-    slice_max(first_best_week, n = 1, with_ties = FALSE) |>
-    mutate(story = "Slowest to number one"),
-  billboard_song_summary |>
-    filter(best_rank <= 10) |>
-    slice_max(weeks_on_chart, n = 1, with_ties = FALSE) |>
-    mutate(story = "Longest top-10 chart run")
-) |>
-  select(story, song, first_rank, best_rank, first_best_week, weeks_on_chart)
-```
-
-```{r wk6-comparison}
+#
+#
+#
 billboard |>
   mutate(
     wk6_status = case_when(
@@ -180,6 +120,7 @@ billboard |>
     )
   ) |>
   count(wk6_status, name = "songs")
-```
-artist.familiarity: A measure of 0..1 for how familiar the artist is to listeners.
-artist.hotttnesss: A measure of 0..1 for how "hot" the artist is at the time of the song's release.
+#
+#
+#
+#

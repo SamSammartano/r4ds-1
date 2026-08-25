@@ -69,7 +69,132 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 317 × 7
+   artist         track                   date.entered   wk1   wk2   wk3   wk4
+   &lt;chr&gt;          &lt;chr&gt;                   &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 2 Pac          Baby Don't Cry (Keep... 2000-02-26      87    82    72    77
+ 2 2Ge+her        The Hardest Part Of ... 2000-09-02      91    87    92    NA
+ 3 3 Doors Down   Kryptonite              2000-04-08      81    70    68    67
+ 4 3 Doors Down   Loser                   2000-10-21      76    76    72    69
+ 5 504 Boyz       Wobble Wobble           2000-04-15      57    34    25    17
+ 6 98^0           Give Me Just One Nig... 2000-08-19      51    39    34    26
+ 7 A*Teens        Dancing Queen           2000-07-08      97    97    96    95
+ 8 Aaliyah        I Don't Wanna           2000-01-29      84    62    51    41
+ 9 Aaliyah        Try Again               2000-03-18      59    53    38    28
+10 Adams, Yolanda Open My Heart           2000-08-26      76    76    74    69
+# ℹ 307 more rows</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Min.      1st Qu.       Median         Mean      3rd Qu.         Max. 
+"1999-06-05" "2000-02-05" "2000-04-29" "2000-05-03" "2000-08-12" "2000-12-30" </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 × 3
+   variable                 statistic    value
+   &lt;chr&gt;                    &lt;chr&gt;        &lt;dbl&gt;
+ 1 artist.familiarity       minimum      0    
+ 2 artist.familiarity_lower quartile     0.468
+ 3 artist.familiarity       median       0.564
+ 4 artist.familiarity_upper quartile     0.668
+ 5 artist.familiarity       maximum      1    
+ 6 artist.hotttnesss        minimum      0    
+ 7 artist.hotttnesss_lower  quartile     0.325
+ 8 artist.hotttnesss        median       0.381
+ 9 artist.hotttnesss_upper  quartile     0.454
+10 artist.hotttnesss        maximum      1.08 
+11 song.year                minimum      0    
+12 song.year_lower          quartile     0    
+13 song.year                median       0    
+14 song.year_upper          quartile  2000    
+15 song.year                maximum   2010    
+16 song.tempo               minimum      0    
+17 song.tempo_lower         quartile    97.0  
+18 song.tempo               median     120.   
+19 song.tempo_upper         quartile   144.   
+20 song.tempo               maximum    263.   </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 317</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/wk1-histogram-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 280</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/wk6-histogram-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/ranking-over-time-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  week  missing present
+  &lt;chr&gt;   &lt;int&gt;   &lt;int&gt;
+1 wk1         0     317
+2 wk4        17     300
+3 wk10       73     244
+4 wk20      171     146
+5 wk40      310       7
+6 wk76      317       0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  reentered songs
+  &lt;lgl&gt;     &lt;int&gt;
+1 FALSE         4
+2 TRUE        313</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 6
+  story                song  first_rank best_rank first_best_week weeks_on_chart
+  &lt;chr&gt;                &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;           &lt;dbl&gt;          &lt;int&gt;
+1 Fastest to number o… Mado…         41         1               6             24
+2 Slowest to number o… Lone…         81         1              40             55
+3 Longest top-10 char… Cree…         81         7              46             57</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  wk6_status        songs
+  &lt;fct&gt;             &lt;int&gt;
+1 Improved            251
+2 Same                  2
+3 Worse                27
+4 Missing by week 6    37</code></pre>
+</div>
+</div>
+<p>artist.familiarity: A measure of 0..1 for how familiar the artist is to listeners. artist.hotttnesss: A measure of 0..1 for how “hot” the artist is at the time of the song’s release.</p>
 
 </main>
 <!-- /main column -->
